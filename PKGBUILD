@@ -2,18 +2,17 @@
 pkgname=fastsetup
 pkgver=1.0.0
 pkgrel=1
-pkgdesc="Dotfiles auto-setup tool for Arch + Hyprland"
+pkgdesc="Auto setup Arch + Hyprland dotfiles from remote repo"
 arch=('any')
 url="https://github.com/yuishigam1/fastsetup"
 license=('MIT')
-depends=('git' 'zsh' 'neovim' 'hyprland') # add your dependencies here
-makedepends=()
+depends=('git' 'zsh' 'neovim' 'hyprland')
+makedepends=('git')
 provides=('fastsetup')
-conflicts=()
-source=("git+$url.git")
+conflicts=('fastsetup-git')
+source=("install.sh")
 md5sums=('SKIP')
 
 package() {
-  cd "$srcdir/$pkgname"
-  install -Dm755 install.sh "$pkgdir/usr/bin/fastsetup"
+  install -Dm755 "$srcdir/install.sh" "$pkgdir/usr/bin/fastsetup"
 }
